@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="center-form-container-article">
+    <form class="add-article" style="text-align: center;" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.errors }}
+                <p class="add-product-label">{{ field.label_tag }} {{ field }}</p>
+            </div>
+        {% endfor %}
+        <button type="submit">Опублікувати3</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- <h1 style="text-align: center; margin-top: 350px;">Hello, {{ profile.profile.username }}!</h1> -->
+
+    <div class="profile-card">
+        <h2><b>Автор: </b>{{ profile.profile.first_name }} {{ profile.profile.last_name }}</h2>
+        <h2><b>Емейл: </b>{{ profile.profile.email }}</h2>
+        <h2><b>Дата реєстрації: </b>{{ profile.profile.date_joined }}</h2>
+    </div>
+    
+    {% if request.user.username|lower == slug|lower %}
+        <a href="{% url 'create-article' %}"><button>Подати статтю</button></a>
+    {% endif %}
+
+    <div class="card">
+        <img src="{% static 'media/home.png' %}" alt="John" style="width:50%">
+        <h1>{{ profile.profile.first_name }} {{ profile.profile.last_name }}</h1>
+        <p class="title">Автор</p>
+        <p><button><a href="{% url 'profile' profile.profile.username %}">{{ profile.profile.username }}</a></button></p>
+      </div>
+{% endblock %}

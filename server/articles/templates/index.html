@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="welcome">
+    <h1 style="text-align: center; color: rgb(0, 0, 0);">Hello, world!</h1>
+</div>
+<h2 class="about-index">
+    This is portfolio!
+</h2>
+<h3 class="ix">How are you?</h3>
+{% for article in articles %}
+    <h1>{{ article.title }}</h1>
+    <h1>{{ article.descrihption }}</h1>
+    <a href="{% url 'profile' article.user.username %}"><h1>{{ article.user.username }}</h1></a>
+{% endfor %}
+{% endblock %}
