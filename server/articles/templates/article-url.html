@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+    <img src="{{ article.image.url }}" alt="" width="300" height="300">
+
+    <div style="flex: 1;">
+        <h1 style="background-color: aliceblue;">{{ article.title }}</h1>
+        <h3 style="margin-top: 10px; text-align: justify; background-color: aliceblue;">
+            {{ article.description }}
+        </h3>
+        <p>Категорія: {{ article.category.title }}</p>
+        Автор статті: <a href="{% url 'profile' article.user.username %}">{{ article.user.username }}</a>
+        <p>Дата публікації: {{ article.time_create }}</p>
+    </div>
+</div>
+
+{% endblock %}

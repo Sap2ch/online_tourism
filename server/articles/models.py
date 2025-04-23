@@ -5,6 +5,7 @@ from category.models import Category
 
 class Article(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
+    slug = models.SlugField(max_length=255, null=True, unique=True, verbose_name='URL')
     description = models.TextField(verbose_name='Опис')
     image = models.ImageField(upload_to='article/%Y/%m/%d/', null=True)
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата створення')
@@ -14,3 +15,4 @@ class Article(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
