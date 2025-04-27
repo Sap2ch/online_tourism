@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
     <div>
-        {{categories}}
-        {% for category in categories %}
-            <h1>{{ category }}</h1>
-        {% endfor %}
+        <h1 class="title-category">
+            Категорії
+        </h1>
     </div>
+    
+    {% for category in categories %}
+        <div class="card-category">
+        <a href="{% url 'articles_by_category' category.slug %}">
+            <img src="{{ category.image.url }}" alt="{{ category.title }}" style="width: 100%; height: 200px; object-fit: cover;">
+        </a>
+        <div class="content" style="padding: 15px; background-color: white;">
+            <a href="{% url 'articles_by_category' category.slug %}"><h2>{{ category.title }}</h2></a>
+        </div>
+    </div>
+    
+    {% endfor %}
 {% endblock %}
+

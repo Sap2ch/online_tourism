@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card-container">
+    {% for article in articles %}
+    <div class="card">
+        <a href="{% url 'article-url' article.slug %}"><img src="{{ article.image.url }}" alt="{{ article.title }}"></a>
+        <a href="{% url 'article-url' article.slug %}"><h2>{{ article.title }}</h2></a>
+        <p>{{ article.description|truncatechars:100 }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

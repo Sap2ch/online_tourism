@@ -13,6 +13,10 @@
         <p>Категорія: {{ article.category.title }}</p>
         Автор статті: <a href="{% url 'profile' article.user.username %}">{{ article.user.username }}</a>
         <p>Дата публікації: {{ article.time_create }}</p>
+
+        {% if request.user.username|lower == article.user.username %}
+        <a href="{% url 'update-post' article.slug %}"><button>Редагувати статтю</button></a>
+        {% endif %}
     </div>
 </div>
 

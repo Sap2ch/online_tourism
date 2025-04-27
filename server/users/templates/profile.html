@@ -12,6 +12,7 @@
     
     {% if request.user.username|lower == slug|lower %}
         <a href="{% url 'create-article' %}"><button>Подати статтю</button></a>
+        <a href="{% url 'my-posts' %}"><button>Мої статті</button></a>
     {% endif %}
 
     <div class="card">
